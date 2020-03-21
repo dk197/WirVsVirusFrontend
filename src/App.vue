@@ -1,30 +1,23 @@
 <template>
     <div id="app">
         <div>
-            <b-tabs content-class="mt-3" fill>
-                <b-tab title="First" active>
-                    <p>I'm the first tab</p>
-                </b-tab>
-                <b-tab title="Second">
-                    <p>I'm the second tab</p>
-                </b-tab>
-                <b-tab title="Disabled">
-                    <p>I'm a disabled tab!</p>
-                </b-tab>
-            </b-tabs>
+            <b-nav class="bottom-nav" tabs justified>
+                <b-nav-item active><router-link to="/">Map</router-link></b-nav-item>
+                <b-nav-item><router-link to="/feed">Feed</router-link></b-nav-item>
+                <b-nav-item><router-link to="/chat">Chat</router-link></b-nav-item>
+                <b-nav-item><router-link to="/profile">Profil</router-link></b-nav-item>
+            </b-nav>
         </div>
         <b-container fluid>
             <router-view />
         </b-container>
-        <!-- <div id="nav">
-            <router-link to="/">Map</router-link>|
-            <router-link to="/feed">Feed</router-link>
-            <router-link to="/chat">Chat</router-link>
-            <router-link to="/profile">Profil</router-link>
-        </div>
-        <router-view />-->
     </div>
 </template>
 
 <style>
+.bottom-nav {
+    position: fixed; 
+    width: 100%;
+    bottom: 0;
+}
 </style>
