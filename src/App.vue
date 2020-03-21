@@ -73,11 +73,6 @@ export default {
 };
 </script>
 <style>
-#app{
-    height: 100vh;
-    width: 100vw;
-    background: lightgrey;
-}
 a {
     color: #fff;
     text-decoration: none;
@@ -86,7 +81,7 @@ a {
 }
 
 .tab-bar {
-    background: white;
+    background: #f5f5f5;
     padding: 0 20px;
     display: flex;
     position: fixed;
@@ -100,7 +95,7 @@ a {
 
 .tab-bar .tab-indicator {
     position: absolute;
-    background-color: lightgrey;
+    background-color: white;
     width: 100px;
     height: 70px;
     border-radius: 0 0 50px 50px;
@@ -111,7 +106,7 @@ a {
 
 .tab-bar .tab-indicator .tab-indicator-left,
 .tab-bar .tab-indicator .tab-indicator-right {
-    background-color: lightgrey;
+    background-color: white;
     height: 25px;
     width: 25px;
     position: absolute;
@@ -122,7 +117,7 @@ a {
     content: "";
     width: 100%;
     height: 100%;
-    background-color: #fefcfe;
+    background-color: #f5f5f5;
     display: block;
 }
 
@@ -172,19 +167,19 @@ a {
 }
 
 .tab-bar .tab-item .tab-item-inner svg * {
-    stroke: #bbb;
+    stroke: black;
 }
 
 .tab-bar .tab-item.router-link-active .tab-item-inner {
     transform: translateY(-20px);
     transition-delay: 0.2s;
-    background-color: #fefcfe;
+    background-color: black;
     z-index: 2;
     box-shadow: 0 5px 5px 0px rgba(0, 0, 0, .25);
 }
 
 .tab-bar .tab-item.router-link-active .tab-item-inner svg * {
-    stroke: #333;
+    stroke: white;
     opacity: 0;
     animation: draw 0.8s linear forwards 0.2s;
 }
