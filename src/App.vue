@@ -1,36 +1,5 @@
 <template>
     <div id="app">
-        <!-- <div>
-            <div id="background">
-                <div id="round">
-                </div>
-            </div>
-            <b-nav id="tab-bar" tabs justified>
-                <b-nav-item class="icon selected" active>
-                    <router-link to="/">
-                        <img class="icon-picture" src="https://image.flaticon.com/icons/svg/709/709579.svg" />
-                    </router-link>
-                </b-nav-item>
-                <b-nav-item class="icon">
-                    <router-link to="/feed">
-                        <img class="icon-picture" src="https://image.flaticon.com/icons/svg/709/709579.svg" />
-                    </router-link>
-                </b-nav-item>
-                <b-nav-item class="icon">
-                    <router-link to="/chat">
-                        <img class="icon-picture" src="https://image.flaticon.com/icons/svg/709/709579.svg" />
-                    </router-link>
-                </b-nav-item>
-                <b-nav-item class="icon">
-                    <router-link to="/profile">
-                        <img class="icon-picture" src="https://image.flaticon.com/icons/svg/709/709579.svg" />
-                    </router-link>
-                </b-nav-item>
-            </b-nav>
-        </div>
-        <b-container fluid>
-            <router-view />
-        </b-container> -->
         <div class="tab-bar" ref="tabBar">
             <div class="tab-indicator" ref="tabIndicator">
                 <div class="tab-indicator-left"></div>
