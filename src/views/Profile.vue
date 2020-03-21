@@ -3,6 +3,7 @@
         <p>Profil</p>
         <div v-if="!checkIfLoggedIn">
             <LoginForm v-if="showLoginForm"></LoginForm>
+            <b-button type="submit" v-on:click="showRegisterForm" v-if="showLoginForm">Registrieren</b-button>
             <RegistrationForm v-else></RegistrationForm>
         </div>
         <div v-else>
@@ -24,6 +25,11 @@ export default {
     computed: {
         checkIfLoggedIn() {
             return this.$store.getters.isLoggedIn
+        }
+    },
+    methods: {
+        showRegisterForm() {
+            this.showLoginForm = false
         }
     },
     components: {
