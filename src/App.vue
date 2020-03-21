@@ -58,6 +58,9 @@
                 </div>
             </router-link>
         </div>
+        <b-container fluid>
+            <router-view />
+        </b-container>
     </div>
 </template>
 <script>
