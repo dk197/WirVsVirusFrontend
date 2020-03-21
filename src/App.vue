@@ -1,32 +1,30 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link>|
-            <router-link to="/about">About</router-link>
+        <div>
+            <b-tabs content-class="mt-3" fill>
+                <b-tab title="First" active>
+                    <p>I'm the first tab</p>
+                </b-tab>
+                <b-tab title="Second">
+                    <p>I'm the second tab</p>
+                </b-tab>
+                <b-tab title="Disabled">
+                    <p>I'm a disabled tab!</p>
+                </b-tab>
+            </b-tabs>
         </div>
-        <router-view />
+        <b-container fluid>
+            <router-view />
+        </b-container>
+        <!-- <div id="nav">
+            <router-link to="/">Map</router-link>|
+            <router-link to="/feed">Feed</router-link>
+            <router-link to="/chat">Chat</router-link>
+            <router-link to="/profile">Profil</router-link>
+        </div>
+        <router-view />-->
     </div>
 </template>
 
 <style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-
-#nav {
-    padding: 30px;
-}
-
-#nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-    color: #42b983;
-}
 </style>
