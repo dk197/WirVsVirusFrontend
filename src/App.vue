@@ -36,7 +36,7 @@
                 <div class="tab-indicator-left"></div>
                 <div class="tab-indicator-right"></div>
             </div>
-            <a href="#" class="tab-item active" v-on:click="clickHandler">
+            <router-link to="/map" class="tab-item" v-on:click.native="clickHandler">
                 <div class="tab-item-inner">
                     <svg id="layout" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 115.79 115.8">
@@ -50,8 +50,8 @@
                             height="42.09" rx="3.29" ry="3.29" />
                     </svg>
                 </div>
-            </a>
-            <a href="#" class="tab-item" v-on:click="clickHandler">
+            </router-link>
+            <router-link to="/feed" class="tab-item" v-on:click.native="clickHandler">
                 <div class="tab-item-inner">
                     <svg id="list" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.02 44.9">
                         <path fill="none" stroke="#000" stroke-width="6" stroke-linecap="round"
@@ -65,8 +65,8 @@
                         <circle fill="none" stroke="#000" stroke-width="6" cx="3.93" cy="40.97" r=".93" />
                     </svg>
                 </div>
-            </a>
-            <a href="#" class="tab-item" v-on:click="clickHandler">
+            </router-link>
+            <router-link to="/chat" class="tab-item" v-on:click.native="clickHandler">
                 <div class="tab-item-inner">
                     <svg id="settings" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 116.21 116.03">
@@ -75,8 +75,8 @@
                         <circle fill="none" stroke="#000" stroke-width="10" cx="58.01" cy="58.72" r="22.64" />
                     </svg>
                 </div>
-            </a>
-            <a href="#" class="tab-item" ref="tabItem" v-on:click="clickHandler">
+            </router-link>
+            <router-link to="/profile" class="tab-item" v-on:click.native="clickHandler">
                 <div class="tab-item-inner">
                     <svg id="message" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 115.4 99.43">
@@ -87,7 +87,7 @@
                             transform="translate(-6.8 -14.38)" />
                     </svg>
                 </div>
-            </a>
+            </router-link>
         </div>
     </div>
 </template>
@@ -95,14 +95,7 @@
 export default {
     methods: {
         clickHandler(event) {
-            const tabItems = document.getElementsByClassName('tab-item')
             const tabIndicator = this.$refs.tabIndicator;
-
-            tabItems.forEach(element => {
-                element.classList.remove('active');
-            });
-
-            event.target.classList.add('active');
             
             const distance = Math.floor(event.target.getBoundingClientRect().left - 30);
             tabIndicator.style.transform = 'translateX(' + distance +'px)';
@@ -213,7 +206,7 @@ a {
     stroke: #bbb;
 }
 
-.tab-bar .tab-item.active .tab-item-inner {
+.tab-bar .tab-item.router-link-active .tab-item-inner {
     transform: translateY(-20px);
     transition-delay: 0.2s;
     background-color: #fefcfe;
@@ -221,33 +214,33 @@ a {
     box-shadow: 0 5px 5px 0px rgba(0, 0, 0, .25);
 }
 
-.tab-bar .tab-item.active .tab-item-inner svg * {
+.tab-bar .tab-item.router-link-active .tab-item-inner svg * {
     stroke: #333;
     opacity: 0;
     animation: draw 0.8s linear forwards 0.2s;
 }
 
-.tab-item.active #layout * {
+.tab-item.router-link-active #layout * {
     stroke-dasharray: 260;
     stroke-dashoffset: 260;
 }
 
-.tab-item.active #list * {
+.tab-item.router-link-active #list * {
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
 }
 
-.tab-item.active #settings * {
+.tab-item.router-link-active #settings * {
     stroke-dasharray: 415;
     stroke-dashoffset: 415;
 }
 
-.tab-item.active #message * {
+.tab-item.router-link-active #message * {
     stroke-dasharray: 370;
     stroke-dashoffset: 370;
 }
 
-.tab-item.active #user * {
+.tab-item.router-link-active #user * {
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
 }
