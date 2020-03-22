@@ -12,7 +12,7 @@
                             </b-row>
                             <b-row>
                                 <b-col>
-                                    <p style="color: #464646, font-weight: 100">Melde dich hier an.</p>
+                                    <p id="untertitel">Melde dich hier an.</p>
                                 </b-col>
                             </b-row>
                             <b-form @submit.prevent="handleLogin">
@@ -125,6 +125,11 @@ export default {
     padding-top: 90px;
 }
 
+#untertitel {
+    color: #464646;
+    font-weight: 300;
+}
+
 .form-control {
     border: 0;
     border-radius: 0;
@@ -132,6 +137,8 @@ export default {
     padding: 25px 0;
     transition: all 0.2s ease-out;
     margin-bottom: 10px;
+    color: #464646;
+    font-weight: 300;
 }
 
 .form-control:focus {
