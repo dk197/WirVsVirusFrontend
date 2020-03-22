@@ -1,6 +1,7 @@
 <template>
     <div id="app">
-        <div v-if="checkIfLoggedIn" class="tab-bar" ref="tabBar">
+        <!-- <div v-if="checkIfLoggedIn" class="tab-bar" ref="tabBar"> -->
+        <div class="tab-bar" ref="tabBar">
             <div class="tab-indicator" ref="tabIndicator">
                 <div class="tab-indicator-left"></div>
                 <div class="tab-indicator-right"></div>
@@ -58,9 +59,7 @@
                 </div>
             </router-link>
         </div>
-        <b-container fluid>
-            <router-view />
-        </b-container>
+        <router-view />
     </div>
 </template>
 <script>

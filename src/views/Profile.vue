@@ -1,23 +1,25 @@
 <template>
-    <b-row>
-        <div v-if="!checkIfLoggedIn">
-            <div v-if="showLoginForm">
-                <LoginForm></LoginForm>
-                <div id="register">
-                    <p>Neu hier?</p>
-                    <b-button type="submit" v-on:click="showRegistrationForm" variant="link">Registrieren</b-button>
+    <b-container fluid>
+        <b-row>
+            <div v-if="!checkIfLoggedIn">
+                <div v-if="showLoginForm">
+                    <LoginForm></LoginForm>
+                    <div id="register">
+                        <p>Neu hier?</p>
+                        <b-button type="submit" v-on:click="showRegistrationForm" variant="link">Registrieren</b-button>
+                    </div>
                 </div>
+                <RegistrationForm v-else></RegistrationForm>
+                <b-button @click="showRegistrationForm">Registrieren</b-button>
             </div>
-            <RegistrationForm v-else></RegistrationForm>
-            <b-button @click="showRegistrationForm">Registrieren</b-button>
-        </div>
-        <div v-else>
-            <p>Profil</p>
-            user is logged in
-            <b-button @click="showProfileForm">Profil anlegen</b-button>
-            <ProfileForm v-if="showProfileFormStatus"></ProfileForm>
-        </div>
-    </b-row>
+            <div v-else>
+                <p>Profil</p>
+                user is logged in
+                <b-button @click="showProfileForm">Profil anlegen</b-button>
+                <ProfileForm v-if="showProfileFormStatus"></ProfileForm>
+            </div>
+        </b-row>
+    </b-container>
 </template>
 
 <script>

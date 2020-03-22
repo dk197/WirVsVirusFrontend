@@ -1,7 +1,9 @@
 <template>
-    <b-row>
-        <p>Feed</p>
-    </b-row>
+    <b-container fluid>
+        <b-row>
+            <p>Feed</p>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
