@@ -101,7 +101,7 @@ export default {
     }
 };
 </script>
-<style scroped>
+<style scoped>
 #ebene1 {
     height: 100vh;
     width: 100vw;

@@ -128,6 +128,7 @@ export default {
 #untertitel {
     color: #464646;
     font-weight: 300;
+    margin-bottom: 30px;
 }
 
 .form-control {
