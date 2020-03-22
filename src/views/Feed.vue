@@ -1,7 +1,7 @@
 <template>
     <b-row>
         <p>Feed</p>
-         <router-link to="/createoffer"><b-button>+</b-button></router-link>
+         <router-link to="/createoffer"><b-button class="tobotbtn">+</b-button></router-link>
     </b-row>
 </template>
 
@@ -10,7 +10,7 @@ import axios from 'axios'
 export default {
     data() {
         return {
-
+            offers: []
         }
     },
     methods: {
@@ -61,5 +61,11 @@ export default {
 </script>
 
 <style scoped>
-
+.tobotbtn {
+    position: fixed;
+    bottom: 12%;
+    right: 5%;;
+    border-radius: 50%;
+    background-color: black;
+}
 </style>
