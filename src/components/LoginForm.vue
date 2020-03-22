@@ -7,7 +7,7 @@
                         <b-container>
                             <b-row>
                                 <b-col>
-                                    <h1>Login</h1>
+                                    <h2>LOGIN</h2>
                                 </b-col>
                             </b-row>
                             <b-row>

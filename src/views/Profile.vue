@@ -48,7 +48,7 @@ export default {
     #register {
         z-index: 10;
         position: absolute;
-        bottom: 90px;
+        bottom: 20px;
         padding-left: 15px;
         display: flex;
         align-items: center;
