@@ -45,12 +45,6 @@
                     </div>
                     <div>
                         <h2>PROFILE VERWALTEN</h2>
-                        <!-- <div class="card">
-                            <img src="@/assets/helga.png" alt="Profil Bild"/>
-                            <h3>Hildegard Maier</h3>
-                            <svg class="bi bi-chevron-right" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
-                        </div> -->
                         <b-card-group deck>
                             <b-card no-body class="overflow-hidden rounded-0">
                                 <b-row no-gutters>
@@ -68,9 +62,6 @@
                             </b-card>
                         </b-card-group>
                     </div>
-
-                    <p>Profil</p>
-                    user is logged in
                     <b-button @click="showProfileForm">Profil anlegen</b-button>
                     <ProfileForm v-if="showProfileFormStatus"></ProfileForm>
                 </b-container>
@@ -204,11 +195,6 @@ export default {
         font-size: 16px;
         margin-bottom: 0;
     }
-
-    /* .card h3{
-        font-size: 16px;
-        float: left;
-    } */
 
     label {
         padding: 0;
