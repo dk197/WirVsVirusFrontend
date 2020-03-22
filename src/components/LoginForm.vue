@@ -59,12 +59,12 @@ export default {
                             }
                         }`,
                         variables: {
-                            email: "t.haral2d@gmx.de",
-                            password: "Test123"
+                            email: this.form.email,
+                            password: this.form.password
                         }
                     }
                 );
-                console.log(response.data.data.login);
+                console.log(response.data);
                 localStorage.setItem('token', response.data.data.login.token)
                 this.$store.commit('logUserIn')
             }catch(e) {

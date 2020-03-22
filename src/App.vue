@@ -64,6 +64,7 @@
     </div>
 </template>
 <script>
+import router from './router/index.js'
 export default {
     computed: {
         checkIfLoggedIn() {
@@ -71,6 +72,10 @@ export default {
         }
     },
     mounted: function() {
+        if(!this.$store.getters.isLoggedIn) {
+            router.push({ name: 'Profile' })
+        }
+
         if(this.$store.getters.isLoggedIn) {
             const tabIndicator = this.$refs.tabIndicator;
             const activeTabLink = document.getElementsByClassName('router-link-active')[0];

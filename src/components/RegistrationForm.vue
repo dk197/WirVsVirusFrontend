@@ -91,7 +91,7 @@ export default {
                     }
                 );
                 console.log(response.data);
-                localStorage.setItem('token', response.data.data.login.token)
+                localStorage.setItem('token', response.data.data.register.token)
                 this.$store.commit('logUserIn')
             }catch(e) {
                 console.log(e);

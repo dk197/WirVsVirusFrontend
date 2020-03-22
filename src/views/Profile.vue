@@ -5,26 +5,30 @@
                 <LoginForm></LoginForm>
                 <div id="register">
                     <p>Neu hier?</p>
-                    <b-button type="submit" v-on:click="showRegisterForm" variant="link">Registrieren</b-button>
+                    <b-button type="submit" v-on:click="showRegistrationForm" variant="link">Registrieren</b-button>
                 </div>
             </div>
             <RegistrationForm v-else></RegistrationForm>
+            <b-button @click="showRegistrationForm">Registrieren</b-button>
         </div>
         <div v-else>
             <p>Profil</p>
             user is logged in
+            <b-button @click="showProfileForm">Profil anlegen</b-button>
+            <ProfileForm v-if="showProfileFormStatus"></ProfileForm>
         </div>
-        <h1>{{ this.$store.isLoggedIn }}</h1>
     </b-row>
 </template>
 
 <script>
 import LoginForm from '../components/LoginForm.vue'
 import RegistrationForm from '../components/RegistrationForm.vue'
+import ProfileForm from '../components/ProfileForm.vue'
 export default {
     data() {
         return {
-            showLoginForm: true
+            showLoginForm: true,
+            showProfileFormStatus: false
         }
     },
     computed: {
@@ -33,13 +37,17 @@ export default {
         }
     },
     methods: {
-        showRegisterForm() {
-            this.showLoginForm = false
+        showProfileForm() {
+            this.showProfileFormStatus = !this.showProfileFormStatus
+        },
+        showRegistrationForm() {
+            this.showLoginForm = !this.showLoginForm
         }
     },
     components: {
         LoginForm,
-        RegistrationForm
+        RegistrationForm,
+        ProfileForm
     }
 }
 </script>
