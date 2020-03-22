@@ -1,7 +1,7 @@
 <template>
     <b-row>
         <p>Eintrag erstellen</p>
-        <b-form @submit="handleOfferCreate">
+        <b-form @submit.prevent="handleOfferCreate">
             <b-col cols="12">
                 <b-form-group>
                     <b-form-radio-group v-model="form.formType">
@@ -11,10 +11,12 @@
                 </b-form-group>
             </b-col>
                 <b-form-select v-model="form.category" :options="options.category"></b-form-select>
-                <b-form-input required v-model="form.land" placeholder="Titel"></b-form-input>
-                <b-form-textarea required v-model="form.land" placeholder="Beschreibung"></b-form-textarea>
+                <b-form-input required v-model="form.title" placeholder="Titel"></b-form-input>
+                <b-form-textarea required v-model="form.description" placeholder="Beschreibung"></b-form-textarea>
                 <b-form-select v-model="form.profile" :options="options.profile"></b-form-select>
                 <b-form-textarea v-if="form.category === 'einkaufsliste'" v-model="form.shoppingList" placeholder="Einkaufsliste (optional)"></b-form-textarea>
+                <b-form-input :type="'number'" required v-model="form.cost" placeholder="geschätzte Kosten"></b-form-input>
+                <b-form-input :type="'number'" required v-model="form.tip" placeholder="Trinkgeld"></b-form-input>
             <b-button type="submit">Erstellen</b-button>
         </b-form>
     </b-row>
@@ -42,18 +44,24 @@ export default {
                 title: '',
                 description: '',
                 profile: null,
-                shoppingList: ''
-            }
+                shoppingList: '',
+                cost: 0,
+                tip: 0
+            },
+            addressProfiles: []
         };
     },
     mounted() {
         this.addUsersProfilesToSelect()
     },
     methods: {
-        addUsersProfilesToSelect() {
-            const profiles =this.getUsersProfiles()
+        async addUsersProfilesToSelect() {
+            const profiles = await this.getUsersProfiles()
 
-            console.log(profiles);
+            profiles.forEach(addressProfile => {
+                this.options.profile.push({value: addressProfile.pid, text: `${addressProfile.nachname} (${addressProfile.strasse} ${addressProfile.hausnummer})`})
+                this.addressProfiles.push(addressProfile)
+            });
         },
         async getUsersProfiles() {
             try {
@@ -81,49 +89,56 @@ export default {
                     },
                     {headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }}
                 );
-                console.log(response.data);
+                return response.data.data.getMyProfiles
             }catch(e) {
                 console.log(e);
             }
         },
         async handleOfferCreate() {
+            const indexOfProfile = this.addressProfiles.findIndex(x => x.pid === this.form.profile);
+            const profile = this.addressProfiles[indexOfProfile]
+
             try {
                 const response = await axios.post(
                     "http://95.217.162.151:4000/graphql",
                     {
                         query: `
-                            mutation Offer($offerType: String!, $nachname: String!, $strasse: String!, $hausnummer: String!, $adresszusatz: String!, $stadt: String!, $plz: String!, $land: String!){
-                                createOffer(vorname: $vorname, nachname: $nachname, strasse: $strasse, hausnummer: $hausnummer, adresszusatz: $adresszusatz, stadt: $stadt, plz: $plz, land: $land) {
+                            mutation Offer($offertype: String!, $jobtype: String!, $title: String!, $description: String!, $vorname: String!, $nachname: String!, $cost: Float!, $tipp: Float!, $shoppingList: String!, $long: String!, $lat: String!){
+                                createOffer(offertype: $offertype, jobtype: $jobtype, title: $title, description: $description, vorname: $vorname, nachname: $nachname, cost: $cost, tipp: $tipp, shoppingList: $shoppingList, long: $long, lat: $lat) {
                                     uid
-                                    offerType
+                                    oid
+                                    offertype
+                                    jobtype
+                                    date
+                                    title
+                                    description
+                                    vorname
                                     nachname
-                                    strasse
-                                    hausnummer
-                                    adresszusatz
-                                    stadt
-                                    plz
-                                    land
+                                    cost
+                                    tipp
+                                    shoppingList
                                     long
                                     lat
                                 }
                             }
                         `,
                         variables: {
-                            offerType: this.form.offerType,
-                            nachname: this.form.nachname,
-                            strasse: this.form.strasse,
-                            hausnummer: this.form.hausnummer,
-                            adresszusatz: this.form.adresszusatz,
-                            stadt: this.form.stadt,
-                            plz: this.form.plz,
-                            land: this.form.land
+                            offertype: this.form.formType,
+                            jobtype: this.form.category,
+                            title: this.form.title,
+                            description: this.form.description,
+                            vorname: profile.vorname,
+                            nachname: profile.nachname,
+                            cost: parseFloat(this.form.cost),
+                            tipp: parseFloat(this.form.tip),
+                            shoppingList: this.form.shoppingList,
+                            long: profile.long.toString(),
+                            lat: profile.lat.toString()
                         }
                     },
                     {headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }},
                 );
                 console.log(response.data);
-                localStorage.setItem('token', response.data.data.login.token)
-                this.$store.commit('logUserIn')
             }catch(e) {
                 console.log(e);
             }
