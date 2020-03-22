@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="tab-bar" ref="tabBar">
+        <div v-if="checkIfLoggedIn" class="tab-bar" ref="tabBar">
             <div class="tab-indicator" ref="tabIndicator">
                 <div class="tab-indicator-left"></div>
                 <div class="tab-indicator-right"></div>
@@ -65,6 +65,17 @@
 </template>
 <script>
 export default {
+    computed: {
+        checkIfLoggedIn() {
+            return this.$store.getters.isLoggedIn
+        }
+    },
+    mounted: function() {
+        const tabIndicator = this.$refs.tabIndicator;
+        const activeTabLink = document.getElementsByClassName('router-link-active')[0];
+        const distance = Math.floor(activeTabLink.getBoundingClientRect().left - 30);
+        tabIndicator.style.transform = 'translateX(' + distance +'px)';
+    },
     methods: {
         clickHandler(event) {
             const tabIndicator = this.$refs.tabIndicator;
@@ -94,6 +105,7 @@ a {
     right: 0;
     height: 80px;
     justify-content: space-between;
+    z-index: 1;
 }
 
 .tab-bar .tab-indicator {
