@@ -73,7 +73,7 @@ export default {
     },
     mounted: function() {
         if(!this.$store.getters.isLoggedIn) {
-            router.push({ name: 'Profile' })
+            router.push({ name: 'Map' })
         }
 
         if(this.$store.getters.isLoggedIn) {
