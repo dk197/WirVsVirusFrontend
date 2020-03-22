@@ -5,7 +5,7 @@
                 <LoginForm></LoginForm>
                 <div id="register">
                     <p>Neu hier?</p>
-                    <b-button type="submit" v-on:click="showRegisterForm" variant="link">Registrieren</b-button>
+                    <b-button type="submit" v-on:click="showRegistrationForm" variant="link">Registrieren</b-button>
                 </div>
             </div>
             <RegistrationForm v-else></RegistrationForm>
