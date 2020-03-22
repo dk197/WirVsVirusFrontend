@@ -122,7 +122,7 @@ export default {
     position: absolute;
     top: 5vh;
     left: 0;
-    padding-top: 100px;
+    padding-top: 90px;
 }
 
 .form-control {
