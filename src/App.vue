@@ -73,7 +73,7 @@ export default {
     },
     mounted: function() {
         if(!this.$store.getters.isLoggedIn) {
-            router.push({ name: 'Map' })
+            router.push({ name: 'Profile' })
         }
 
         if(this.$store.getters.isLoggedIn) {
@@ -122,7 +122,7 @@ a {
     height: 70px;
     border-radius: 0 0 50px 50px;
     z-index: 1;
-    transform: translateX(-10px);
+    transform: translateX(245px);
     transition: transform 0.3s ease-out;
 }
 
