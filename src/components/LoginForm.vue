@@ -17,7 +17,7 @@
                             </b-row>
                             <b-form @submit.prevent="handleLogin">
                                 <b-form-input required v-model="form.email" placeholder="E-Mail"></b-form-input>
-                                <b-form-input required v-model="form.password" placeholder="Passwort"></b-form-input>
+                                <b-form-input required v-model="form.password" placeholder="Passwort" type="password"></b-form-input>
                                 <b-button type="submit" pill variant="dark">
                                     Anmelden
                                     <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

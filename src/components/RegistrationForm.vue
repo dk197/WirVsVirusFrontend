@@ -31,9 +31,8 @@
                             <b-form-input required v-model="form.vorname" placeholder="Vorname"></b-form-input>
                             <b-form-input required v-model="form.nachname" placeholder="Nachname"></b-form-input>
                             <b-form-input required v-model="form.email" placeholder="E-Mail"></b-form-input>
-                            <b-form-input required v-model="form.password" placeholder="Passwort"></b-form-input>
-                            <b-form-input required v-model="form.password_confirmation"
-                                placeholder="Passwort bestätigen"></b-form-input>
+                            <b-form-input required v-model="form.password" placeholder="Passwort" type="password"></b-form-input>
+                            <b-form-input required v-model="form.password_confirmation" placeholder="Passwort bestätigen" type="password"></b-form-input>
                             <b-button type="submit" pill variant="dark">
                                 Registrieren
                                 <svg class="bi bi-chevron-right" width="1em" height="1em" viewBox="0 0 16 16"
