@@ -1,8 +1,13 @@
 <template>
     <b-row>
         <div v-if="!checkIfLoggedIn">
-            <LoginForm v-if="showLoginForm"></LoginForm>
-            <b-button type="submit" v-on:click="showRegisterForm" v-if="showLoginForm">Registrieren</b-button>
+            <div v-if="showLoginForm">
+                <LoginForm></LoginForm>
+                <div id="register">
+                    <p>Neu hier?</p>
+                    <b-button type="submit" v-on:click="showRegisterForm" variant="link">Registrieren</b-button>
+                </div>
+            </div>
             <RegistrationForm v-else></RegistrationForm>
         </div>
         <div v-else>
@@ -40,5 +45,19 @@ export default {
 </script>
 
 <style scoped>
-
+    #register {
+        z-index: 10;
+        position: absolute;
+        bottom: 90px;
+        padding-left: 15px;
+        display: flex;
+        align-items: center;
+    }
+    #register p{
+        margin: 0;
+    }
+    .btn-link, .btn-link:hover{
+        color: #903737;
+        padding: 0 5px;
+    }
 </style>
