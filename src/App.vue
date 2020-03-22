@@ -92,6 +92,10 @@ export default {
 };
 </script>
 <style>
+h1, h2, h3, h4, h5 {
+    font-family: 'Montserrat', sans-serif;
+}
+
 a {
     color: #fff;
     text-decoration: none;
@@ -187,13 +191,13 @@ a {
 }
 
 .tab-bar .tab-item .tab-item-inner svg * {
-    stroke: black;
+    stroke: #212529;
 }
 
 .tab-bar .tab-item.router-link-active .tab-item-inner {
     transform: translateY(-20px);
     transition-delay: 0.2s;
-    background-color: black;
+    background-color: #212529;
     z-index: 2;
     box-shadow: 0 5px 5px 0px rgba(0, 0, 0, .25);
 }
