@@ -6,7 +6,7 @@
             <b-form-input required v-model="form.nachname" placeholder="Nachname"></b-form-input>
             <b-form-input required v-model="form.strasse" placeholder="Straße"></b-form-input>
             <b-form-input required v-model="form.hausnummer" placeholder="Hausnummer"></b-form-input>
-            <b-form-input required v-model="form.adresszusatz" placeholder="Adresszusatz"></b-form-input>
+            <b-form-input v-model="form.adresszusatz" placeholder="Adresszusatz"></b-form-input>
             <b-form-input required v-model="form.stadt" placeholder="Stadt"></b-form-input>
             <b-form-input required v-model="form.plz" placeholder="PLZ"></b-form-input>
             <b-form-input required v-model="form.land" placeholder="Land"></b-form-input>
@@ -69,8 +69,6 @@ export default {
                     {headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }},
                 );
                 console.log(response.data);
-                localStorage.setItem('token', response.data.data.login.token)
-                this.$store.commit('logUserIn')
             }catch(e) {
                 console.log(e);
             }

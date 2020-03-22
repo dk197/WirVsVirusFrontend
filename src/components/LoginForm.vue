@@ -35,6 +35,7 @@
 
 <script>
 import axios from 'axios'
+import router from '../router/index.js'
 export default {
     data() {
         return {
@@ -67,6 +68,7 @@ export default {
                 console.log(response.data);
                 localStorage.setItem('token', response.data.data.login.token)
                 this.$store.commit('logUserIn')
+                router.push('/')
             }catch(e) {
                 console.log(e);
             }

@@ -4,6 +4,7 @@ import Map from '../views/Map.vue'
 import Feed from '../views/Feed.vue'
 import Chat from '../views/Chat.vue'
 import Profile from '../views/Profile.vue'
+import OfferForm from '../views/OfferForm.vue'
 
 Vue.use(VueRouter)
 
@@ -28,7 +29,12 @@ const routes = [
         name: 'Profile',
         component: Profile
     },
-    
+    {
+        path: '/createoffer',
+        name: 'CreateOffer',
+        component: OfferForm
+    },
+
 ]
 
 const router = new VueRouter({
