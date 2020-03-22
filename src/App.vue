@@ -71,10 +71,12 @@ export default {
         }
     },
     mounted: function() {
-        const tabIndicator = this.$refs.tabIndicator;
-        const activeTabLink = document.getElementsByClassName('router-link-active')[0];
-        const distance = Math.floor(activeTabLink.getBoundingClientRect().left - 30);
-        tabIndicator.style.transform = 'translateX(' + distance +'px)';
+        if(this.$store.getters.isLoggedIn) {
+            const tabIndicator = this.$refs.tabIndicator;
+            const activeTabLink = document.getElementsByClassName('router-link-active')[0];
+            const distance = Math.floor(activeTabLink.getBoundingClientRect().left - 30);
+            tabIndicator.style.transform = 'translateX(' + distance +'px)';
+        }
     },
     methods: {
         clickHandler(event) {
